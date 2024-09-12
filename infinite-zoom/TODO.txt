@@ -1,0 +1,7 @@
+Need to split off code into dedicated sections
+
+Tidy up styling
+add github linkp
+add resume
+add linkedin
+add contact email and verify emails are received.

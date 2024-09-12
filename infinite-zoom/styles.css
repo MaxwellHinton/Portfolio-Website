@@ -1,10 +1,12 @@
 body, html {
     height: 100%;
     margin: 0;
+    overflow: hidden;
 }
 .content_container {
     height:100vh;
     position: relative;
+    overflow: hidden;
 }
 
 .about_section{
@@ -47,10 +49,47 @@ body, html {
     display : none;
 }
 
-.about_info, .projects_info, .contact_info{
+.about_info {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    padding: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.project_info {
     max-width: 600px;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+    /* Border styling */
+    border: 2px solid #9b59b6;
+    border-radius: 50%;
+    padding: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.contact_info {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    transform-origin: center;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+    /* Border styling */
+    border: 2px solid black;
+    border-radius: 50%; 
+    padding: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .about_section { 
@@ -61,9 +100,4 @@ body, html {
 }
 .contact_section { 
     background-color: #9b59b6; 
-}
-
-/* Zoom stuff */
-.about_info, .project_info,  .contact_info{
-    transition: transform 0.5s ease-in-out;
 }
