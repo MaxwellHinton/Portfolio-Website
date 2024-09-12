@@ -1,0 +1,105 @@
+This txt file will contain information about how I am planning the creation of my personal website.
+
+Tech stack: Backend: Node.JS
+            Database: MongoDB
+            Front end: Next JS
+
+Notes to help my understanding of building a next.js project
+
+-----------------------------------------------
+---- React server componenets (RSC) ----
+-----------------------------------------------
+RSC is a new architecture introduced by React, then embraced by next.js.
+
+intoduced: Server componenets and client components.
+
+In react, all components are server componenets by default.
+- they can read files or fetch data from databses.
+- they CANT use hooks or handle user interactions.
+
+Client components: 
+
+- need to add "use client" at the top of component files.
+- client componenets cant perform tasks like reading files.
+- they CAN use hooks and manage interactions.
+
+-----------------------------------------------
+---- Routing ----
+-----------------------------------------------
+
+Next.js has a FILE-SYSTEM BASED routing mecahnism
+
+this basically means that the webpage loads and find different content via their location
+in the file structure.
+
+i.e. src/app/page.tsx 
+     this is the homepage
+
+but:
+    src/app/about/page.tsx
+    this is the UI page for the about section.
+
+routes can be nested and work just like nested directories do.
+
+
+-----------------------------------------------
+---- Dynamic routing ----
+-----------------------------------------------
+
+eliminates the need for complex nested directories. You can use [] to created a dynamic route.
+Then we can acceess URI values by including { params } in the function parameters.
+
+i.e. 
+
+export default function ProductDetails( {
+    params,
+}: {
+    params: {productID: string}
+}) {
+    return <h1>Details about the product {params.productID}</h1>
+}
+
+This code segment is defining the type of value expected to be defined in params.
+
+-----------------------------------------------
+---- routing concept 3: Catch-all segments ----
+-----------------------------------------------
+
+sometimes we cant just create 400 differnet folders/files for our website information.
+Instead we need to catch every URL segment. To do this we can use the next.js-native folder tag: [.../slug]
+
+We also change {params} to be an array of strings. the array comes from the URL.
+
+Exmaple code that includes conditional chaining ( using slug? ) to create an optional catchall segment.
+to do this we wrap [...slug] with brackets again: [[...slug]]
+
+export default function Docs({
+    params,
+}: {
+    params: {
+        slug: string[];
+    };
+}) {
+
+    if (params.slug?.length === 2){
+        return (
+            <h1>
+                Viewing docs for feature {params.slug[0]} and concept {params.slug[1]}
+            </h1>
+        )
+    }
+    return <h1>Docs home page</h1>
+}
+
+-----------------------------------------------
+---- Custom 404 not found pages ----
+-----------------------------------------------
+
+Custom not found pages can be implemented at folder levels.
+For example, we have created the products/reviews directory. The reviews directory can have its own custom 404 not-found page that is prompted
+when a user tries to access a review out of bound (like 1001 which is > 1000 etc)
+
+To do this we need to: 
+
+1   import {notFound} from "next/navigation"
+2   call the notFound(); function.
