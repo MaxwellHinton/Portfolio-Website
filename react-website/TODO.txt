@@ -1,0 +1,13 @@
+Features to implement on my webpage.
+
+I want this webpage to be the biggest things I have done. Showcasing:
+
+interactivity
+my side projects
+contact information
+information about myself and my emplyment status
+
+future harder Features
+compiler project being interactive: Users can test my compiler for a small subset of javascript code.
+
+maybe have a small game that users can play too.
